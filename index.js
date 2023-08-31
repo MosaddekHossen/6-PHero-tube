@@ -46,5 +46,5 @@ const handleCard = async (Id) => {
         cardContainer.appendChild(div);
     })
 }
-
+handleCard("1000");
 allCategory()
