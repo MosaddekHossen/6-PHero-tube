@@ -15,6 +15,7 @@ const handleCard = async (Id) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${Id}`)
     const data = await res.json()
     const cardContainer = document.getElementById('card-container')
+    cardContainer.textContent = "";
     data.data.forEach((car) => {
         const div = document.createElement('div')
         console.log(car)
