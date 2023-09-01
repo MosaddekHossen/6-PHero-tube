@@ -23,29 +23,26 @@ const handleCard = async (Id) => {
     else {
         error.classList.add('hidden')
     }
-
     data.data.forEach((car) => {
         const date = time(car.others.posted_date);
         function time(seconds) {
             const minutes = Math.floor(seconds / 60);
             const hours = Math.floor(minutes / 60);
             const min = minutes % 60;
-            const second = seconds % 60;
-        
             return {
                 hours: hours,
-                minutes: min,
-                seconds: second
+                minutes: min
             };
-        }        
+        }
         const div = document.createElement('div')// avatar online
+        const postedDate = car.others.posted_date.length !== 0 ? time(car.others.posted_date) : '';
         div.innerHTML = `
         <div class="card bg-base-100 shadow-xl mb-5 relative">
         <figure>
-        <img src="${car?.thumbnail}" class="h-[200px] rounded-xl" alt="Shoes" />
+        <img src="${car?.thumbnail}" class="h-[200px] w-full rounded-xl" alt="Shoes" />
         </figure>
-        <h6 class="text-white bg-black px-5 py-2 absolute z-10 right-2 top-36 rounded-lg text-[16px] inline-block">${date.hours}hrs ${date.minutes}  
-          min ago</h6>
+        ${postedDate ? `<h6 class="text-white bg-[#171717] px-5 py-2 absolute z-10 right-2 top-36 rounded-lg text-[16px] inline-block">${postedDate.hours}hrs ${postedDate.minutes}  
+          min ago</h6>` : `<h6 class="text-white px-5 py-2 absolute z-10 right-2 top-36 rounded-lg text-[16px] inline-block"></h6>`}
                 <div class="card-footer flex justify-between mt-8">
                     <div class="flex gap-3">
                     <div>
@@ -80,7 +77,8 @@ const handleCard = async (Id) => {
             </div>
             `;
         cardContainer.appendChild(div);
-    })
+    });
 }
+
+allCategory();
 handleCard("1000");
-allCategory()
