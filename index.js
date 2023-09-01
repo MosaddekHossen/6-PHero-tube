@@ -18,8 +18,6 @@ const handleCard = async (Id) => {
     cardContainer.textContent = "";
     data.data.forEach((car) => {
         const div = document.createElement('div')
-        console.log()
-        console.log(car)
         div.innerHTML = `
         <div class="card bg-base-100 shadow-xl mb-5">
             <figure>
